@@ -7,7 +7,7 @@ using TeamMembersHub.Application.Queries;
 namespace TeammembersHub.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/members")]
 public class TeamMemberController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -16,32 +16,38 @@ public class TeamMemberController : ControllerBase
     {
         _mediator = mediator;
     }
-
-    [HttpPost]
-    public async Task AddTeamMember(string name, string email, string phone)
+    //TODO ogarnac argumenty dawane do metod
+    [HttpPost("add")]
+    public async Task<IActionResult> AddTeamMember(string name,string email, string phone)
     {
         await _mediator.Send(new AddTeamMemberCommand(name,email,phone));
+
+        return Ok();
     }
     
-    [HttpPost]
-    public async Task UpdateTeamMember(Guid id,string name, string email, string phone )
+    [HttpPut("update/{id}")]
+    public async Task<IActionResult> UpdateTeamMember(Guid id,string name, string email, string phone )
     {
         await _mediator.Send(new UpdateTeamMemberCommand(id,name,email,phone));
+
+        return Ok();
     }
     
-    [HttpPost]
-    public async Task DeleteTeamMember(Guid id)
-    {
-        await _mediator.Send(new DeleteTeamMemberCommand(id));
-    }
+    // [HttpDelete]
+    // public async Task DeleteTeamMember(Guid id)
+    // {
+    //     await _mediator.Send(new DeleteTeamMemberCommand(id));
+    // }
     
-    [HttpPost]
-    public async Task ChangeTeamMemberStatus(Guid id,int status)
+    [HttpDelete("status/{id}")]
+    public async Task<IActionResult> ChangeTeamMemberStatus(Guid id,int status)
     {
         await _mediator.Send(new ChangeTeamMemberStatusCommand(id, status));
+
+        return Ok();
     }
     
-    [HttpPost]
+    [HttpGet("get")]
     public async Task<List<TeamMemberDataModel>> GetTeamMembers()
     {
         var result = await _mediator.Send(new GetTeamMembersQuery());

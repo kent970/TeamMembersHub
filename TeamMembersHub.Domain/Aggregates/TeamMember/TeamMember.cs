@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TeamMembersHub.Domain.Enums;
 
 namespace TeamMembersHub.Domain.Aggregates.TeamMember;
@@ -15,13 +16,14 @@ public class TeamMember
     [Required]
     public string Phone { get; protected set; }
     [Required]
+    [Column(TypeName = "timestamp without time zone")]
     public DateTime CreatedAt { get; protected set; }
     [Required]
     public TeamMemberStatus Status { get; protected set; }
 
     private TeamMember(string name, string email, string phone)
     {
-        Id = new Guid();
+        Id = Guid.NewGuid();
         Name = name;
         Email = email;
         Phone = phone;

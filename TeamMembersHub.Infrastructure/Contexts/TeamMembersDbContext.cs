@@ -17,6 +17,13 @@ public class TeamMembersDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
+        optionsBuilder.UseNpgsql(_configuration.GetConnectionString("TeamMembers"));
+    }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<TeamMember>()
+            .Property(e => e.CreatedAt)
+            .HasColumnType("timestamp(0) without time zone"); // Specifies seconds precision
     }
 }

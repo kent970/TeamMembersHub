@@ -20,7 +20,7 @@ public class TeamMemberQueryHandlers : IRequestHandler<GetTeamMembersQuery, List
     public async Task<List<TeamMemberDataModel>> Handle(GetTeamMembersQuery request, CancellationToken cancellationToken)
     {
         var teamMembers = await _repository.GetTeamMembers();
-        var teamMemberDataModels = teamMembers.Select(x => _mapper.Map<TeamMemberDataModel>(x)).ToList();
+        var teamMemberDataModels = _mapper.Map<List<TeamMemberDataModel>>(teamMembers);
         return teamMemberDataModels;
     }
 }
