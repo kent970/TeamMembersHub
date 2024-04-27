@@ -8,9 +8,9 @@ namespace TeamMembersHub.Infrastructure;
 
 public class DatabaseInitializer
 {
-    public static void Seed(IApplicationBuilder applicationBuilder)
+    public static void Seed(WebApplicationBuilder applicationBuilder)
     {
-        using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+        using (var serviceScope = applicationBuilder.Services.CreateScope())
         {
             var context = serviceScope.ServiceProvider.GetService<TeamMembersDbContext>();
             
@@ -33,3 +33,4 @@ public class DatabaseInitializer
         }
     }
 }
+
