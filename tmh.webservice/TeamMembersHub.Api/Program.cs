@@ -1,5 +1,6 @@
 using System.Reflection;
 using TeamMembersHub.Application.CommandHandlers;
+using TeamMembersHub.Application.FetchServices;
 using TeamMembersHub.Application.QueryHandlers;
 using TeamMembersHub.Application.Repositories;
 using TeamMembersHub.Domain.Aggregates.TeamMember;
@@ -21,6 +22,11 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(TeamM
 
 builder.Services.AddDbContext<TeamMembersDbContext>();
 builder.Services.AddScoped<ITeamMembersRepository, TeamMembersRepository>();
+builder.Services.AddScoped<IRandomUserApiService, RandomUserApiService>();
+builder.Services.AddHttpClient<IRandomUserApiService,RandomUserApiService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
+});
 
 var app = builder.Build();
 

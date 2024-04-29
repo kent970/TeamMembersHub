@@ -1,0 +1,117 @@
+/* Styles for Table */
+.Table {
+    width: 1536px;
+    height: 669px;
+    border-radius: 8px;
+    border: 1px solid #E2DFE2;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+}
+
+/* Styles for Content */
+.Content {
+    align-self: stretch;
+    flex: 1 1 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+}
+
+/* Styles for Column */
+.Column {
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+}
+
+/* Styles for TableHeaderCell */
+.TableHeaderCell {
+    align-self: stretch;
+    height: 44px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #E2DFE2;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    display: inline-flex;
+}
+
+/* Styles for TableHeader */
+.TableHeader {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+}
+
+/* Styles for Text */
+.Text {
+    word-wrap: break-word;
+}
+
+/* Styles for TableCell */
+.TableCell {
+    align-self: stretch;
+    height: 40px;
+    padding: 16px;
+    border-bottom: 1px solid #ECEAEC;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    display: inline-flex;
+}
+
+/* Styles for Image1 */
+.Image1 {
+    width: 31px;
+    height: 31px;
+}
+
+/* Styles for Badge */
+.Badge {
+    padding: 2px 8px;
+    background: #E7F7EB;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+}
+
+/* Styles for Dropdown */
+.Dropdown {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+}
+
+/* Styles for Dropdown1 */
+.Dropdown1 {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+/* Styles for MoreVertical */
+.MoreVertical {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+/* Styles for Icon */
+.Icon {
+    width: 1.67px;
+    height: 13.33px;
+    left: 9.17px;
+    top: 3.33px;
+    position: absolute;
+    background: #8C7D8C;
+    border: 1px solid #8C7D8C;
+}

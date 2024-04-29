@@ -1,0 +1,14 @@
+.TableHead {
+  display: flex;
+  flex-direction: row;
+}
+
+.TableHeadCell {
+  padding: 16px;
+  color:#667085;
+  font-size:12;
+  font-family: Inter, serif;
+  font-weight:500;
+  line-height:18;
+  word-wrap:break-word;
+}

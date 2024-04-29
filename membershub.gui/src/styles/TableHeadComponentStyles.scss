@@ -1,0 +1,67 @@
+.Mainframe {
+  width: 100%;
+  height: 3rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4;
+  display: inline-flex;
+
+  .Toptitleframe {
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4;
+    display: inline-flex;
+
+    .Titletext {
+      text-align: center;
+      color: #201D20;
+      font-size: 20px;
+      word-wrap: break-word;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .Supportingtext {
+      text-align: center;
+      color: #8B7E8B;
+      font-size: 12px;
+      word-wrap: break-word;
+      font-family: 'Inter', sans-serif;
+    }
+  }
+
+  .ButtonContainer {
+    padding: 6px;
+    background: #F5F4F5;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+
+    .ButtonFrame {
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      display: flex;
+    }
+
+    .Icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      color: black;
+    }
+
+    .ButtonText {
+      text-align: justify;
+      color: #201D20;
+      font-size: 14px;
+      word-wrap: break-word;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      text-transform: none;
+    }
+  }
+}

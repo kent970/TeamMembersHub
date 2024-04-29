@@ -17,10 +17,18 @@ public class TeamMemberController : ControllerBase
         _mediator = mediator;
     }
     //TODO ogarnac argumenty dawane do metod
+    // [HttpPost("add")]
+    // public async Task<IActionResult> AddTeamMember(string name,string email, string phone)
+    // {
+    //     await _mediator.Send(new AddTeamMemberCommand(name,email,phone));
+    //
+    //     return Ok();
+    // }
+    
     [HttpPost("add")]
-    public async Task<IActionResult> AddTeamMember(string name,string email, string phone)
+    public async Task<IActionResult> AddRandomTeamMember()
     {
-        await _mediator.Send(new AddTeamMemberCommand(name,email,phone));
+        await _mediator.Send(new AddRandomTeamMemberCommand());
 
         return Ok();
     }
