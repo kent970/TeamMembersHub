@@ -74,7 +74,7 @@ public class Picture
     public string thumbnail { get; set; }
 }
 
-public class Result2
+public class Result
 {
     public string gender { get; set; }
     public Name name { get; set; }
@@ -100,6 +100,6 @@ public class Info
 
 public class RootModel
 {
-    public Result2[] results { get; set; }
+    public Result[] results { get; set; }
     public Info info { get; set; }
 }

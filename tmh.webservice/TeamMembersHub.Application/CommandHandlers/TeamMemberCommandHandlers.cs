@@ -28,7 +28,7 @@ public class TeamMemberCommandHandlers :
 
     public async Task Handle(AddTeamMemberCommand request, CancellationToken cancellationToken)
     {
-        var teamMember = TeamMember.Create(request.Name, request.Email, request.Phone);
+        var teamMember = TeamMember.Create(request.Name, request.Email, request.Phone, request.ImageUrl);
         await _repository.AddTeamMember(teamMember);
     }
 
@@ -38,8 +38,9 @@ public class TeamMemberCommandHandlers :
         var name = string.Concat(rootModel.results[0].name.first, " ", rootModel.results[0].name.last);
         var email = rootModel.results[0].email;
         var phone = rootModel.results[0].phone;
+        var imageUrl = rootModel.results[0].picture.large;
         
-        await _mediator.Send(new AddTeamMemberCommand(name, email, phone));
+        await _mediator.Send(new AddTeamMemberCommand(name, email, phone,imageUrl));
     }
 
     public async Task Handle(ChangeTeamMemberStatusCommand request, CancellationToken cancellationToken)
@@ -60,4 +61,5 @@ public class TeamMemberCommandHandlers :
         teamMember.UpdateData(request.Name, request.Email, request.Phone);
         await _repository.UpdateTeamMember(teamMember);
     }
+    
 }

@@ -1,0 +1,13 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a19772f_002Df222_002D4be3_002D8aa1_002D5c8f2a4c8ebc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TeamMembersCommandHandlerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::B3779062-90C2-4163-AB2E-08BFD55BDAF9::net7.0::TeamMembersHub.Tests.TeamMembersCommandHandlerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B3779062-90C2-4163-AB2E-08BFD55BDAF9::net7.0::TeamMembersHub.Tests.RandomUserApiServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B3779062-90C2-4163-AB2E-08BFD55BDAF9::net7.0::TeamMembersHub.Tests.TeamMembersQueryHandlersTests.Handle_GetTeamMembersQuery_Returns_TeamMemberDataModels&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f4160a30_002D183a_002D4a38_002Dbec4_002Dd4f11ad2b39e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TeamMembersQueryHandlersTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::B3779062-90C2-4163-AB2E-08BFD55BDAF9::net7.0::TeamMembersHub.Tests.TeamMembersQueryHandlersTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

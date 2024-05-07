@@ -20,7 +20,6 @@ public interface ITeamMembersRepository
 
 public class TeamMembersRepository : ITeamMembersRepository
 {
-    //TODO moze jednak interfejs zrobic do db contextu
     private readonly TeamMembersDbContext _dbContext;
 
     public TeamMembersRepository(TeamMembersDbContext dbContext)

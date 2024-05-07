@@ -12,11 +12,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import '../styles/TableBodyComponentStyles.scss';
 import TeamMemberStatusChangedComponent from "./TeamMemberStatusChangedComponent";
 import ProfileCard from "./ProfileCard";
+import useTeamMembers from "../hooks/useTeamMembers";
 
 const TableBodyComponent = () => {
     const [openCancelButton, setOpenCancelButton] = useState<HTMLButtonElement | null>(null);
     const [openAlert, setOpenAlert] = useState(false);
     const [openProfileCard, setProfileCardOpen] = useState(false);
+    const { teamMembers, loading, error } = useTeamMembers();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setOpenCancelButton(event.currentTarget);
 
@@ -35,43 +37,34 @@ const TableBodyComponent = () => {
             setProfileCardOpen(true);
         }
     };
-
-    function createData(name: string, email: string, phoneNumber: string, status: string, creationDate: string, actions: string) {
-        return {name, email, phoneNumber, status, creationDate, actions};
-    }
-
-    const rows = [
-        createData('Jan Kowalski', 'jan@kowalski.pl', '+48 123 456 789', 'Aktywny', '14.09.2020', ''),
-    ];
-
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell className="TableHeadCell" width={416}>Name</TableCell>
+                        <TableCell className="TableHeadCell" width={416}>Nazwa</TableCell>
                         <TableCell className="TableHeadCell" width={416}>Email</TableCell>
-                        <TableCell className="TableHeadCell" width={416}>Phone Number</TableCell>
+                        <TableCell className="TableHeadCell" width={416}>Numer telefonu</TableCell>
                         <TableCell className="TableHeadCell" width={98}>Status</TableCell>
-                        <TableCell className="TableHeadCell" width={126}>Creation Date</TableCell>
+                        <TableCell className="TableHeadCell" width={126}>Data utworzenia</TableCell>
                         <TableCell className="TableHeadCell" width={64}>Actions</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {teamMembers.map((row) => (
                         <TableRow key={row.name} onClick={(event) => handleRowClick(event, row)} className="TableRow">
 
                             <TableCell style={{width: 416, padding: 16}}>
-                                <img src="https://randomuser.me/api/portraits/men/40.jpg" alt="avatar"
+                                <img src={row.imageUrl} alt="avatar"
                                      style={{width: 31, height: 31, paddingRight: 16}}/>
                                 {row.name}
                             </TableCell>
                             <TableCell style={{width: 416, padding: 16}}>{row.email}</TableCell>
-                            <TableCell style={{width: 416, padding: 16}}>{row.phoneNumber}</TableCell>
+                            <TableCell style={{width: 416, padding: 16}}>{row.phone}</TableCell>
                             <TableCell style={{width: 98, padding: 16}}>
                                 <div className="Badge">{row.status}</div>
                             </TableCell>
-                            <TableCell style={{width: 126, padding: 16}}>{row.creationDate}</TableCell>
+                            <TableCell style={{width: 126, padding: 16}}>{row.createdAt}</TableCell>
                             <TableCell style={{width: 64, padding: 16}}>
                                 <IconButton onClick={handleClick}>
                                     <MoreVertIcon/>

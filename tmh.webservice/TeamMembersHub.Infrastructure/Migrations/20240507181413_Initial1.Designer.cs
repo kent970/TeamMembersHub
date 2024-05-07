@@ -12,7 +12,7 @@ using TeamMembersHub.Infrastructure.Contexts;
 namespace TeamMembersHub.Infrastructure.Migrations
 {
     [DbContext(typeof(TeamMembersDbContext))]
-    [Migration("20240427174241_Initial1")]
+    [Migration("20240507181413_Initial1")]
     partial class Initial1
     {
         /// <inheritdoc />
@@ -35,6 +35,10 @@ namespace TeamMembersHub.Infrastructure.Migrations
                         .HasColumnType("timestamp(0) without time zone");
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("text");
 

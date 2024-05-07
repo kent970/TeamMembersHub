@@ -20,8 +20,9 @@ public class TeamMember
     public DateTime CreatedAt { get; protected set; }
     [Required]
     public TeamMemberStatus Status { get; protected set; }
+    public string ImageUrl { get; protected set; }
 
-    private TeamMember(string name, string email, string phone)
+    private TeamMember(string name, string email, string phone, string imageUrl)
     {
         Id = Guid.NewGuid();
         Name = name;
@@ -29,9 +30,10 @@ public class TeamMember
         Phone = phone;
         CreatedAt = DateTime.Now;
         Status = TeamMemberStatus.Active;
+        ImageUrl = imageUrl;
     }
 
-    public static TeamMember Create(string name, string email, string phone) => new TeamMember(name, email, phone);
+    public static TeamMember Create(string name, string email, string phone,string imageUrl) => new TeamMember(name, email, phone,imageUrl);
 
     public void ChangeStatus(TeamMemberStatus status)
     {

@@ -23,12 +23,22 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(TeamM
 builder.Services.AddDbContext<TeamMembersDbContext>();
 builder.Services.AddScoped<ITeamMembersRepository, TeamMembersRepository>();
 builder.Services.AddScoped<IRandomUserApiService, RandomUserApiService>();
-builder.Services.AddHttpClient<IRandomUserApiService,RandomUserApiService>(client =>
+builder.Services.AddHttpClient<IRandomUserApiService, RandomUserApiService>(client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhostPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
+app.UseCors("AllowLocalhostPolicy");
 
 //TODO
 //DatabaseInitializer.Seed(app);

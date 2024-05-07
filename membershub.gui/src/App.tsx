@@ -44,7 +44,6 @@ const App = () => {
             <div className="AppHeader" style={{paddingBottom: '32px'}}>
                 <TableHeadComponent/>
             </div>
-
             <TableBodyComponent/>
             <ProfileCard/><NewTeamMemberCard/>
         </div>

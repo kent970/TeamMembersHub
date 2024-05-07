@@ -1,0 +1,173 @@
+.PaperContainer {
+  width: 480px;
+  height: 380px;
+  padding: 16px;
+  background: #FCFCFC;
+  box-shadow: 0px 20px 24px -4px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  border: 1px #CFC9CF solid;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px;
+}
+.MainBoxContainer {
+  align-self: stretch;
+  height: 214px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 90px;
+}
+.MiddleBoxContainer {
+  align-self: stretch;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.InnerBoxContainer {
+  align-self: stretch;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.MainTypography {
+  flex: 1 1 0;
+  color: #201D20;
+  font-size: 18px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+.SupportingTypography {
+  width: 448px;
+  color: #8B7E8B;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.MainButton {
+  width: 100%;
+  color: black;
+  border-color: black;
+  background: #FCFCFC;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px #CFC9CF solid;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.ParentBox {
+  align-self: stretch;
+  height: 174px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.ChildBox {
+  width: 445px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.InnerBox {
+  width: 131px;
+  align-self: stretch;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ParentTextBox {
+  align-self: stretch;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ChildTextBox {
+  width: 287px;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  display: flex;
+}
+
+.InnerTextBox {
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+  display: inline-flex;
+}
+.DescriptionText {
+  width: 261px;
+  color: #8B7E8B;
+  font-size: 12px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  word-wrap: break-word;
+  padding-left: 16px;
+}
+.MainInput {
+  width: 261px;
+  color: #201D20;
+  border-width: 1px;
+  border-color: #aaaaaa;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  word-wrap: break-word;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+.ButtonContainer {
+  align-self: stretch;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 55px;
+}
+.LowerButton {
+  width: 100%;
+  color: black;
+  border-color: black;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px #CFC9CF solid;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+
+
+
+
+
+
+
+
+
