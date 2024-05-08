@@ -1,9 +1,7 @@
-// reducers.ts
 import { combineReducers } from 'redux';
 import { FETCH_TEAM_MEMBERS_SUCCESS, TeamMembersActionTypes } from './actions';
 
 interface TeamMember {
-    // Define your team member data structure here
 }
 
 interface TeamMembersState {

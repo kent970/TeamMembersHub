@@ -7,130 +7,118 @@ using TeamMembersHub.Application.FetchServices;
 using TeamMembersHub.Application.Repositories;
 using TeamMembersHub.Domain.Aggregates.TeamMember;
 using TeamMembersHub.Domain.Enums;
+using Xunit;
 
 namespace TeamMembersHub.Tests;
 
 public class TeamMembersCommandHandlerTests
 {
+    private readonly ITeamMembersRepository _repository;
+    private readonly IMediator _mediator;
+    private readonly IRandomUserApiService _apiService;
+    private readonly TeamMemberCommandHandlers _handler;
+
+    public TeamMembersCommandHandlerTests()
+    {
+        _repository = Substitute.For<ITeamMembersRepository>();
+        _mediator = Substitute.For<IMediator>();
+        _apiService = Substitute.For<IRandomUserApiService>();
+        _handler = new TeamMemberCommandHandlers(_repository, _mediator, _apiService);
+    }
+
+
     [Fact]
     public async Task Handle_AddTeamMemberCommand_AddsTeamMember()
     {
-        // Arrange
-        var repository = Substitute.For<ITeamMembersRepository>();
-        var mediator = Substitute.For<IMediator>();
-        var apiService = Substitute.For<IRandomUserApiService>();
-
-        var handler = new TeamMemberCommandHandlers(repository, mediator, apiService);
-        var command = new AddTeamMemberCommand("John Doe", "john@example.com", "1234567890", "http://example.com");
+        //arrange
+        var command = new AddTeamMemberCommand("Jan Kowalski", "jan@kowalski.com", "1234567890", "example.com");
 
         // Act
-        await handler.Handle(command, CancellationToken.None);
+        await _handler.Handle(command, CancellationToken.None);
 
         // Assert
-        await repository.Received(1).AddTeamMember(Arg.Any<TeamMember>());
+        await _repository.Received(1).AddTeamMember(Arg.Any<TeamMember>());
     }
 
     [Fact]
     public async Task Handle_AddRandomTeamMemberCommand_AddsRandomTeamMember()
     {
         // Arrange
-        var repository = Substitute.For<ITeamMembersRepository>();
-        var mediator = Substitute.For<IMediator>();
-        var apiService = Substitute.For<IRandomUserApiService>();
-
-        // Create a mock response for GetResponse
         var mockRootModel = new RootModel
         {
-            results = new Result[] {
+            results = new Result[]
+            {
                 new Result
                 {
-                    name = new Name { first = "John", last = "Doe" },
-                    email = "john@example.com",
+                    name = new Name { first = "Jan", last = "Kowalski" },
+                    email = "jan@kowalski.com",
                     phone = "1234567890",
-                    picture = new Picture { large = "http://example.com" }
+                    picture = new Picture { large = "example.com" }
                 }
             }
         };
-        apiService.GetResponse().Returns(Task.FromResult(mockRootModel));
+        _apiService.GetResponse().Returns(Task.FromResult(mockRootModel));
 
-        var handler = new TeamMemberCommandHandlers(repository, mediator, apiService);
         var command = new AddRandomTeamMemberCommand();
 
         // Act
-        await handler.Handle(command, CancellationToken.None);
+        await _handler.Handle(command, CancellationToken.None);
 
         // Assert
-        await apiService.Received(1).GetResponse();
-        await mediator.Received(1).Send(Arg.Any<AddTeamMemberCommand>(), CancellationToken.None);
+        await _apiService.Received(1).GetResponse();
+        await _mediator.Received(1).Send(Arg.Any<AddTeamMemberCommand>(), CancellationToken.None);
     }
+
     [Fact]
-public async Task Handle_ChangeTeamMemberStatusCommand_ChangesMemberStatus()
-{
-    // Arrange
-    var repository = Substitute.For<ITeamMembersRepository>();
-    var mediator = Substitute.For<IMediator>();
-    var apiService = Substitute.For<IRandomUserApiService>();
+    public async Task Handle_ChangeTeamMemberStatusCommand_ChangesMemberStatus()
+    {
+        // Arrange
+        Guid memberId = Guid.NewGuid();
+        var newStatus = TeamMemberStatus.Active;
+        var command = new ChangeTeamMemberStatusCommand(memberId, (int)newStatus);
 
-    var handler = new TeamMemberCommandHandlers(repository, mediator, apiService);
-    Guid memberId = Guid.NewGuid();
-    var newStatus = TeamMemberStatus.Active;
-    var command = new ChangeTeamMemberStatusCommand(memberId, (int)newStatus);
+        var teamMember = TeamMember.Create("name", "email", "phone", "url");
+        _repository.GetTeamMemberById(memberId).Returns(Task.FromResult(teamMember));
 
-    var teamMember = TeamMember.Create("name","email","phone","url");
-    repository.GetTeamMemberById(memberId).Returns(Task.FromResult(teamMember));
+        // Act
+        await _handler.Handle(command, CancellationToken.None);
 
-    // Act
-    await handler.Handle(command, CancellationToken.None);
+        // Assert
+        await _repository.Received(1).UpdateTeamMember(Arg.Is<TeamMember>(x => x.Status == newStatus));
+    }
 
-    // Assert
-    await repository.Received(1).UpdateTeamMember(Arg.Is<TeamMember>(x => x.Status == newStatus));
-}
+    [Fact]
+    public async Task Handle_DeleteTeamMemberCommand_DeletesMember()
+    {
+        // Arrange
+        var memberId = Guid.NewGuid();
+        var command = new DeleteTeamMemberCommand(memberId);
 
-[Fact]
-public async Task Handle_DeleteTeamMemberCommand_DeletesMember()
-{
-    // Arrange
-    var repository = Substitute.For<ITeamMembersRepository>();
-    var mediator = Substitute.For<IMediator>();
-    var apiService = Substitute.For<IRandomUserApiService>();
+        // Act
+        await _handler.Handle(command, CancellationToken.None);
 
-    var handler = new TeamMemberCommandHandlers(repository, mediator, apiService);
-    var memberId = Guid.NewGuid();
-    var command = new DeleteTeamMemberCommand(memberId);
+        // Assert
+        await _repository.Received(1).DeleteTeamMember(memberId);
+    }
 
-    // Act
-    await handler.Handle(command, CancellationToken.None);
+    [Fact]
+    public async Task Handle_UpdateTeamMemberCommand_UpdatesMemberData()
+    {
+        // Arrange
+        var memberId = Guid.NewGuid();
+        var newName = "Jan Kowalski";
+        var newEmail = "jan@kowalski.com";
+        var newPhone = "1234567890";
+        var command = new UpdateTeamMemberCommand(memberId, newName, newEmail, newPhone);
 
-    // Assert
-    await repository.Received(1).DeleteTeamMember(memberId);
-}
+        var teamMember = TeamMember.Create("name", "email", "phone", "url");
+        _repository.GetTeamMemberById(memberId).Returns(Task.FromResult(teamMember));
 
-[Fact]
-public async Task Handle_UpdateTeamMemberCommand_UpdatesMemberData()
-{
-    // Arrange
-    var repository = Substitute.For<ITeamMembersRepository>();
-    var mediator = Substitute.For<IMediator>();
-    var apiService = Substitute.For<IRandomUserApiService>();
+        // Act
+        await _handler.Handle(command, CancellationToken.None);
 
-    var handler = new TeamMemberCommandHandlers(repository, mediator, apiService);
-    var memberId = Guid.NewGuid();
-    var newName = "John Doe";
-    var newEmail = "john@example.com";
-    var newPhone = "1234567890";
-    var command = new UpdateTeamMemberCommand(memberId, newName, newEmail, newPhone);
-
-    var teamMember = TeamMember.Create("name","email","phone","url");
-    repository.GetTeamMemberById(memberId).Returns(Task.FromResult(teamMember));
-
-    // Act
-    await handler.Handle(command, CancellationToken.None);
-
-    // Assert
-    await repository.Received(1).UpdateTeamMember(Arg.Is<TeamMember>(x =>
-        x.Name == newName && x.Email == newEmail && x.Phone == newPhone));
-}
-
-
-
+        // Assert
+        await _repository.Received(1)
+            .UpdateTeamMember(Arg.Is<TeamMember>(x => x.Name == newName && x.Email == newEmail && x.Phone == newPhone));
+    }
 }

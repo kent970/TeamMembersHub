@@ -9,7 +9,7 @@ public class TeamMembersDbContext : DbContext
     private readonly IConfiguration _configuration;
 
     public DbSet<TeamMember> TeamMembers { get; set; }
-    
+
     public TeamMembersDbContext(IConfiguration configuration)
     {
         _configuration = configuration;
@@ -19,11 +19,11 @@ public class TeamMembersDbContext : DbContext
     {
         optionsBuilder.UseNpgsql(_configuration.GetConnectionString("TeamMembers"));
     }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TeamMember>()
             .Property(e => e.CreatedAt)
-            .HasColumnType("timestamp(0) without time zone"); // Specifies seconds precision
+            .HasColumnType("timestamp(0) without time zone"); 
     }
 }

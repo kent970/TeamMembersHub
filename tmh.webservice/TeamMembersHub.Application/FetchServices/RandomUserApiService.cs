@@ -7,7 +7,8 @@ public interface IRandomUserApiService
 {
     Task<RootModel> GetResponse();
 }
-public class RandomUserApiService: IRandomUserApiService
+
+public class RandomUserApiService : IRandomUserApiService
 {
     private readonly HttpClient _httpClient;
 
@@ -15,10 +16,11 @@ public class RandomUserApiService: IRandomUserApiService
     {
         _httpClient = httpClient;
     }
+
     public async Task<RootModel> GetResponse()
     {
         var response = await _httpClient.GetAsync("");
-        
+
         if (!response.IsSuccessStatusCode)
             throw new HttpRequestException($"Failed to fetch data from API. Status code: {response.StatusCode}");
 
@@ -27,7 +29,7 @@ public class RandomUserApiService: IRandomUserApiService
         {
             PropertyNameCaseInsensitive = true
         };
-        var resultRootModel = JsonSerializer.Deserialize<RootModel>(resultString,options);
+        var resultRootModel = JsonSerializer.Deserialize<RootModel>(resultString, options);
 
         return resultRootModel;
     }

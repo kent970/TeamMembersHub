@@ -12,7 +12,7 @@ const TableHeadComponent = () => {
     const [openNewTeamMemberCard, setOpenNewTeamMemberCard] = React.useState(false);
     const handleOpenNewTeamMemberCard = () => setOpenNewTeamMemberCard(true);
     const handleCloseNewTeamMemberCard = () => setOpenNewTeamMemberCard(false);
-    const { loading, error, success, handleAdd } = useAddRandomUser();
+    const {loading, error, success, handleAdd} = useAddRandomUser();
     const dispatch = useDispatch();
     const handleAddRandomUser = () => {
         handleAdd();

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios, { AxiosError } from 'axios';
 
-// Custom hook for fetching team members data
 const useTeamMembers = () => {
     const [teamMembers, setTeamMembers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);

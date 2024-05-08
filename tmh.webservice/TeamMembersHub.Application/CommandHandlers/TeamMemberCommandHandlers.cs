@@ -18,8 +18,7 @@ public class TeamMemberCommandHandlers :
     private readonly IMediator _mediator;
     private readonly IRandomUserApiService _apiService;
 
-    public TeamMemberCommandHandlers(ITeamMembersRepository repository, IMediator mediator,
-        IRandomUserApiService apiService)
+    public TeamMemberCommandHandlers(ITeamMembersRepository repository, IMediator mediator, IRandomUserApiService apiService)
     {
         _repository = repository;
         _mediator = mediator;
@@ -39,8 +38,8 @@ public class TeamMemberCommandHandlers :
         var email = rootModel.results[0].email;
         var phone = rootModel.results[0].phone;
         var imageUrl = rootModel.results[0].picture.large;
-        
-        await _mediator.Send(new AddTeamMemberCommand(name, email, phone,imageUrl));
+
+        await _mediator.Send(new AddTeamMemberCommand(name, email, phone, imageUrl));
     }
 
     public async Task Handle(ChangeTeamMemberStatusCommand request, CancellationToken cancellationToken)
@@ -61,5 +60,4 @@ public class TeamMemberCommandHandlers :
         teamMember.UpdateData(request.Name, request.Email, request.Phone);
         await _repository.UpdateTeamMember(teamMember);
     }
-    
 }

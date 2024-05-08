@@ -7,8 +7,7 @@ using TeamMembersHub.Application.Repositories;
 
 namespace TeamMembersHub.Application.QueryHandlers;
 
-public class TeamMemberQueryHandlers : IRequestHandler<GetTeamMembersQuery, List<TeamMemberDataModel>>,
-    IRequestHandler<GetRandomTeamMemberQuery,RandomTeamMemberDataModel>
+public class TeamMemberQueryHandlers : IRequestHandler<GetTeamMembersQuery, List<TeamMemberDataModel>>, IRequestHandler<GetRandomTeamMemberQuery, RandomTeamMemberDataModel>
 {
     private readonly ITeamMembersRepository _repository;
     private readonly IMapper _mapper;

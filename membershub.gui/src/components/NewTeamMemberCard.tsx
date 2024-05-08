@@ -3,7 +3,6 @@ import Paper from "@mui/material/Paper";
 import {Avatar, Box, Button, IconButton, Typography} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import DownloadingIcon from "@mui/icons-material/Downloading";
-import EditIcon from "@mui/icons-material/Edit";
 import * as React from "react";
 import '../styles/NewTeamMemberCardStyles.scss';
 
@@ -17,7 +16,6 @@ const NewTeamMemberCard = () => {
 
     const handleSave = () => {
         setIsEditing(false);
-        // Perform save operation here
     };
     return (
         <Paper className="PaperContainer">

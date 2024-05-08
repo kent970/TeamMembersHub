@@ -9,7 +9,6 @@ namespace TeamMembersHub.Application.Repositories;
 
 public interface ITeamMembersRepository
 {
-    //TODO czy napewno w ten sposob wywolywac metody w repo??
     Task AddTeamMember(TeamMember teamMember);
     Task DeleteTeamMember(Guid id);
     Task UpdateTeamMember(TeamMember teamMember);
@@ -50,8 +49,9 @@ public class TeamMembersRepository : ITeamMembersRepository
     {
         return await _dbContext.TeamMembers.ToListAsync();
     }
+
     public async Task<TeamMember> GetTeamMemberById(Guid id)
     {
-        return await _dbContext.TeamMembers.SingleAsync(x=>x.Id == id);
+        return await _dbContext.TeamMembers.SingleAsync(x => x.Id == id);
     }
 }

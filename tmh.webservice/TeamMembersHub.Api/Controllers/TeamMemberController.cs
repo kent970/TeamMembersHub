@@ -4,7 +4,7 @@ using TeamMembersHub.Application.Commands;
 using TeamMembersHub.Application.DataModels;
 using TeamMembersHub.Application.Queries;
 
-namespace TeammembersHub.Api.Controllers;
+namespace TeamMembersHub.Api.Controllers;
 
 [ApiController]
 [Route("api/members")]
@@ -17,11 +17,10 @@ public class TeamMemberController : ControllerBase
         _mediator = mediator;
     }
 
-    //TODO ogarnac argumenty dawane do metod
     [HttpPost("add")]
-    public async Task<IActionResult> AddTeamMember(string name, string email, string phone,string imageUrl)
+    public async Task<IActionResult> AddTeamMember(string name, string email, string phone, string imageUrl)
     {
-        await _mediator.Send(new AddTeamMemberCommand(name, email, phone,imageUrl));
+        await _mediator.Send(new AddTeamMemberCommand(name, email, phone, imageUrl));
         return Ok();
     }
 

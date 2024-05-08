@@ -10,11 +10,11 @@ import '../styles/ProfileCardStyles.scss';
 const ProfileCard = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [name, setName] = useState('Jan Kowalski');
-    const [email, setEmail] = useState('example@example.com');
-    const [phoneNumber, setPhoneNumber] = useState('123-456-7890');
+    const [email, setEmail] = useState('jan@kowalski.com');
+    const [phoneNumber, setPhoneNumber] = useState('123-456-789');
 
     const handleEditClick = () => {
-        setIsEditing(true);
+        setIsEditing(false);
     };
 
     const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -45,100 +45,100 @@ const ProfileCard = () => {
                     </Box>
                 </Box>
                 <Box className="AvatarOuterBox">
-                        <Box className="AvatarMiddleBox">
-                            <Box className="AvatarInnerBox">
-                                <Avatar style={{width: 131, height: 131, borderRadius: 8, border: '1px #E2DFE2 solid'}}
-                                        src="https://randomuser.me/api/portraits/men/40.jpg"/>
-                                <Badge className="AvatarBadge">
-                                    <Typography className="AvatarText">Aktywny</Typography>
-                                </Badge>
-                            </Box>
-                                <Box className="TextsContainer">
-                                    <Box className="AvatarPropBox">
-                                        <Box style={{width: 261, position: 'relative',}}>
-                                            <Typography className="AvatarTextField">Nazwa <br/></Typography>
-                                            {isEditing ? (
-                                                <input
-                                                    type="text"
-                                                    value={name}
-                                                    onChange={handleNameChange}
-                                                    className="InputStyle"
-                                                />
-                                            ) : (
-                                                <Typography className="TypographyStyle">{name}</Typography>
-                                            )}
-                                        </Box>
-                                        {!isEditing && (
-                                            <IconButton onClick={handleEditClick}>
-                                                <EditIcon style={{width: 24, height: 24}}/>
-                                            </IconButton>
-                                        )}
-                                        {isEditing && (
-                                            <IconButton onClick={handleSave}>
-                                                <DoneIcon style={{width: 24, height: 24}}/>
-                                            </IconButton>
-                                        )}
-                                    </Box>
-                                    <Box className="AvatarPropBox">
-                                        <Box style={{width: 261, position: 'relative',}}>
-                                            <Typography className="AvatarTextField">Email <br/></Typography>
-                                            {isEditing ? (
-                                                <input
-                                                    type="text"
-                                                    value={name}
-                                                    onChange={handleEmailChange}
-                                                    className="InputStyle"
-                                                />
-                                            ) : (
-                                                <Typography className="TypographyStyle">{email}</Typography>
-                                            )}
-                                        </Box>
-                                        {!isEditing && (
-                                            <IconButton onClick={handleEditClick}>
-                                                <EditIcon style={{width: 24, height: 24}}/>
-                                            </IconButton>
-                                        )}
-                                        {isEditing && (
-                                            <IconButton onClick={handleSave}>
-                                                <DoneIcon style={{width: 24, height: 24}}/>
-                                            </IconButton>
-                                        )}
-                                    </Box>
-                                    <Box className="AvatarPropBox">
-                                        <Box style={{width: 261, position: 'relative',}}>
-                                            <Typography className="AvatarTextField">Numer telefonu <br/></Typography>
-                                            {isEditing ? (
-                                                <input
-                                                    type="text"
-                                                    value={name}
-                                                    onChange={handlePhoneNumberChange}
-                                                    className="InputStyle"
-                                                />
-                                            ) : (
-                                                <Typography className="TypographyStyle">{phoneNumber}</Typography>
-                                            )}
-                                        </Box>
-                                        {!isEditing && (
-                                            <IconButton onClick={handleEditClick}>
-                                                <EditIcon style={{width: 24, height: 24}}/>
-                                            </IconButton>
-                                        )}
-                                        {isEditing && (
-                                            <IconButton onClick={handleSave}>
-                                                <DoneIcon style={{width: 24, height: 24}}/>
-                                            </IconButton>
-                                        )}
-                                    </Box>
-                                    <Box className="AvatarPropBox">
-                                        <Box style={{width: 261, position: 'relative',}}>
-                                            <Typography className="AvatarTextField">Data utworzenia <br/></Typography>
-
-                                                <Typography className="TypographyStyle">{name}</Typography>
-                                        </Box>
-                                    </Box>
+                    <Box className="AvatarMiddleBox">
+                        <Box className="AvatarInnerBox">
+                            <Avatar style={{width: 131, height: 131, borderRadius: 8, border: '1px #E2DFE2 solid'}}
+                                    src="https://randomuser.me/api/portraits/men/40.jpg"/>
+                            <Badge className="AvatarBadge">
+                                <Typography className="AvatarText">Aktywny</Typography>
+                            </Badge>
+                        </Box>
+                        <Box className="TextsContainer">
+                            <Box className="AvatarPropBox">
+                                <Box style={{width: 261, position: 'relative',}}>
+                                    <Typography className="AvatarTextField">Nazwa <br/></Typography>
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            value={name}
+                                            onChange={handleNameChange}
+                                            className="InputStyle"
+                                        />
+                                    ) : (
+                                        <Typography className="TypographyStyle">{name}</Typography>
+                                    )}
                                 </Box>
+                                {!isEditing && (
+                                    <IconButton onClick={handleEditClick}>
+                                        <EditIcon style={{width: 24, height: 24}}/>
+                                    </IconButton>
+                                )}
+                                {isEditing && (
+                                    <IconButton onClick={handleSave}>
+                                        <DoneIcon style={{width: 24, height: 24}}/>
+                                    </IconButton>
+                                )}
+                            </Box>
+                            <Box className="AvatarPropBox">
+                                <Box style={{width: 261, position: 'relative',}}>
+                                    <Typography className="AvatarTextField">Email <br/></Typography>
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            value={name}
+                                            onChange={handleEmailChange}
+                                            className="InputStyle"
+                                        />
+                                    ) : (
+                                        <Typography className="TypographyStyle">{email}</Typography>
+                                    )}
+                                </Box>
+                                {!isEditing && (
+                                    <IconButton onClick={handleEditClick}>
+                                        <EditIcon style={{width: 24, height: 24}}/>
+                                    </IconButton>
+                                )}
+                                {isEditing && (
+                                    <IconButton onClick={handleSave}>
+                                        <DoneIcon style={{width: 24, height: 24}}/>
+                                    </IconButton>
+                                )}
+                            </Box>
+                            <Box className="AvatarPropBox">
+                                <Box style={{width: 261, position: 'relative',}}>
+                                    <Typography className="AvatarTextField">Numer telefonu <br/></Typography>
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            value={name}
+                                            onChange={handlePhoneNumberChange}
+                                            className="InputStyle"
+                                        />
+                                    ) : (
+                                        <Typography className="TypographyStyle">{phoneNumber}</Typography>
+                                    )}
+                                </Box>
+                                {!isEditing && (
+                                    <IconButton onClick={handleEditClick}>
+                                        <EditIcon style={{width: 24, height: 24}}/>
+                                    </IconButton>
+                                )}
+                                {isEditing && (
+                                    <IconButton onClick={handleSave}>
+                                        <DoneIcon style={{width: 24, height: 24}}/>
+                                    </IconButton>
+                                )}
+                            </Box>
+                            <Box className="AvatarPropBox">
+                                <Box style={{width: 261, position: 'relative',}}>
+                                    <Typography className="AvatarTextField">Data utworzenia <br/></Typography>
+
+                                    <Typography className="TypographyStyle">{name}</Typography>
+                                </Box>
+                            </Box>
                         </Box>
                     </Box>
+                </Box>
             </Box>
             <Box style={{
                 alignSelf: 'stretch',

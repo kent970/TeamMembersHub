@@ -18,7 +18,7 @@ const TableBodyComponent = () => {
     const [openCancelButton, setOpenCancelButton] = useState<HTMLButtonElement | null>(null);
     const [openAlert, setOpenAlert] = useState(false);
     const [openProfileCard, setProfileCardOpen] = useState(false);
-    const { teamMembers, loading, error } = useTeamMembers();
+    const {teamMembers, loading, error} = useTeamMembers();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setOpenCancelButton(event.currentTarget);
 
@@ -69,7 +69,8 @@ const TableBodyComponent = () => {
                                 <IconButton onClick={handleClick}>
                                     <MoreVertIcon/>
                                 </IconButton>
-                                <Popover open={Boolean(openCancelButton)} anchorEl={openCancelButton} onClose={handleClosePopover}
+                                <Popover open={Boolean(openCancelButton)} anchorEl={openCancelButton}
+                                         onClose={handleClosePopover}
                                          anchorOrigin={{vertical: 'bottom', horizontal: 'right',}}
                                          transformOrigin={{vertical: 'top', horizontal: 'right',}}
                                          className="PopoverContainer">
@@ -83,7 +84,8 @@ const TableBodyComponent = () => {
             <Dialog open={openAlert} onClose={handleCloseDialog} fullWidth maxWidth="sm">
                 <TeamMemberStatusChangedComponent/>
             </Dialog>
-            <Modal open={openProfileCard} onClose={() => setProfileCardOpen(false)} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <Modal open={openProfileCard} onClose={() => setProfileCardOpen(false)}
+                   style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Box>
                     <ProfileCard/>
                 </Box>

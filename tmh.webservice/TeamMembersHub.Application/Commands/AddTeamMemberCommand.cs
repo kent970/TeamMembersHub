@@ -8,6 +8,7 @@ public class AddTeamMemberCommand : IRequest
     public string Email { get; protected set; }
     public string Phone { get; protected set; }
     public string ImageUrl { get; set; }
+
     public AddTeamMemberCommand(string name, string email, string phone, string imageUrl)
     {
         Name = name;
